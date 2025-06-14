@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
 test('TodoMVC - CRUD operations with delay', async ({ page }) => {
   const todoInput = page.locator('.new-todo');
 
-  // 🟢 CREATE
+  // CREATE
   await todoInput.fill('Buy milk');
   await page.waitForTimeout(1000);
   await todoInput.press('Enter');
@@ -16,12 +16,12 @@ test('TodoMVC - CRUD operations with delay', async ({ page }) => {
   await expect(page.locator('.todo-list li')).toHaveText(['Buy milk']);
   await page.waitForTimeout(1000);
 
-  // 📘 READ
+  // READ
   const firstTodo = page.locator('.todo-list li').first();
   await expect(firstTodo).toContainText('Buy milk');
   await page.waitForTimeout(1000);
 
-  // 📝 UPDATE
+  // UPDATE
   await firstTodo.dblclick();
   await page.waitForTimeout(1000);
   const editInput = firstTodo.locator('.edit');
@@ -32,7 +32,7 @@ test('TodoMVC - CRUD operations with delay', async ({ page }) => {
   await expect(firstTodo).toContainText('Buy chocolate milk');
   await page.waitForTimeout(1000);
 
-   // ❌ DELETE
+   // DELETE
   await firstTodo.hover();
   await page.waitForTimeout(1000);
   await firstTodo.locator('.destroy').click();
