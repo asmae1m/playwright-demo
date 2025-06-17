@@ -8,11 +8,11 @@ test('Languages in Wikipedia', async () => {
     await page.goto('https://www.wikipedia.org/');
     await page.waitForTimeout(3000);
   
-    await page.locator('#js-link-box-fr').click(); //locate french part and click then
+    await page.locator('#js-link-box-fr').click(); 
   
     await page.waitForTimeout(3000);
   
-    const language= await page.getAttribute('html', 'lang'); //attribut de la page 
+    const language= await page.getAttribute('html', 'lang'); 
     expect(language).toBe('fr'); 
   
     const heading = await page.locator('.firstHeading.mw-first-heading').innerText();
